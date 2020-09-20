@@ -2,3 +2,23 @@
 2020-09-16 18:03:51: production
 2020-09-16 18:04:27: production
 2020-09-16 18:04:34: production
+2020-09-16 18:25:36: production
+2020-09-17 02:25:39: production
+2020-09-17 10:25:41: production
+2020-09-17 12:36:29: [0mGET /app/lan/BeforeLoginCn.js [33m404 [0m6.238 ms - 136[0m
+2020-09-17 18:25:44: production
+2020-09-17 21:34:38: [0mGET http://www.baidu.com/cache/global/img/gs.gif [33m404 [0m6.031 ms - 136[0m
+2020-09-17 23:36:08: [0mGET http://www.baidu.com/cache/global/img/gs.gif [33m404 [0m1.172 ms - 136[0m
+2020-09-18 02:25:45: production
+2020-09-18 10:25:49: production
+2020-09-18 18:25:51: production
+2020-09-19 02:25:52: production
+2020-09-19 02:30:16: [0mGET http://www.baidu.com/cache/global/img/gs.gif [33m404 [0m6.160 ms - 136[0m
+2020-09-19 10:25:53: production
+2020-09-19 12:08:58: [0mGET http://www.baidu.com/cache/global/img/gs.gif [33m404 [0m5.914 ms - 136[0m
+2020-09-19 12:38:48: [0mGET http://www.qq.com/404/search_children.js [33m404 [0m1.106 ms - 136[0m
+2020-09-19 18:25:54: production
+2020-09-19 18:39:18: [0mGET / [33m404 [0m6.183 ms - 136[0m
+2020-09-19 21:45:28: [0mGET http://www.baidu.com/cache/global/img/gs.gif [33m404 [0m1.220 ms - 136[0m
+2020-09-20 02:25:56: production
+2020-09-20 02:58:44: [0mGET http://example.com/ [33m404 [0m6.017 ms - 136[0m
