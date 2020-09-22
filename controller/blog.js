@@ -1,64 +1,107 @@
-const {exec} = require('../db/mysql')
-const getList = (author,keyword) =>{
-    let sql = `select * from blogs where 1=1 `
-    if (author) {
-        sql += `and author='${author}' `
-    }
-    if (keyword) {
-        sql += `and title like '%${keyword}%' `
-    }
-    sql += `order by createtime desc;`
+const mongoose = require('../db/mongoose')
 
-    // 返回 promise
-    return exec(sql)
-}
-const getDetail = (id) =>{
-    const sql = `select * from blogs where id='${id}'`
-    return exec(sql).then(row=>{
-        return row[0]
+
+const BlogSchema = mongoose.Schema({
+
+    // _id:String,
+    title:String,
+    content:String,
+    createTime:Number,
+    author:String
+})
+
+const BlogModel = mongoose.model('Blog',BlogSchema,'blog')
+
+// 查询
+const getList = (_author, _keyword) => {
+
+    const promise =  new Promise ((resolve,reject)=>{
+        BlogModel.find({author:_author,title: {$regex:_keyword}},(err,result)=>{
+            if(err){
+                reject(err)
+                return
+            }
+           
+            resolve(result)
+        })
     })
+    return promise
+
 }
-const newBlog = (blogData={}) =>{
+// 根据id查询
+const getDetail = (id) => {
+    const objectId = mongoose.Types.ObjectId(id)
+    const promise =  new Promise ((resolve,reject)=>{
+        
+        BlogModel.find((objectId),(err,result)=>{
+            if(err){
+                reject(err)
+                return
+            }
+
+            resolve(result)
+        })
+    })
+    return promise
+
+}
+// 增加
+const newBlog = (blogData ={}) => {
+    const instantiationBlog = new BlogModel({
+        title : blogData.title,
+        content : blogData.content,
+        author : blogData.author,
+        createTime : Date.now()
+    })
+    const promise =  new Promise ((resolve,reject)=>{
+        
+        instantiationBlog.save({},(err,result)=>{
+            if(err){
+                reject(err)
+                return
+            }
+
+            resolve(result)
+        })
+    })
+    return promise
+
+}
+// 更新
+const updateBlog = (id,blogData) => {
     const title = blogData.title
     const content = blogData.content
-    const author = blogData.author
-    // const createTime = Date.now()
-    const createTime = "2020-9-15 08:28:26"
-    const sql = `
-    insert into blogs (title,content,createtime,author)
-    values ('${title}','${content}','${createTime}','${author}')
-    `
-    return exec(sql).then(insertData=>{
-        return {
-            id:insertData.insertId
-        }
+    const createTime= blogData.createTime
+    const promise =  new Promise ((resolve,reject)=>{
+        console.log(id)
+        BlogModel.updateOne({'_id':id},{"title":title,"content":content,"createTime":createTime},(err,result)=>{
+            if(err){
+                reject(err)
+                return
+            }
+           console.log(result)
+            resolve(result)
+        })
     })
-}
-const updateBlog = (id,blogData={}) =>{
+    return promise
 
-    const title = blogData.title
-    const content = blogData.content
-    const sql = `
-    update blogs set title='${title}',content='${content}' where id=${id}
-    `
-    return exec(sql).then(data=>{
-        if(data.affectedRows>0){
-            return true
-        }
-        return false
-    })
 }
-const deleteBlog = (id,author) =>{
+// 删除
+const deleteBlog = (id) => {
 
-    const sql = `
-    delete from blogs where id=${id} and author='${author}'
-    `
-    return exec(sql).then(data=>{
-        if(data.affectedRows>0){
-            return true
-        }
-        return false
+    const promise =  new Promise ((resolve,reject)=>{
+
+        BlogModel.deleteOne({'_id':id},(err,result)=>{
+            if(err){
+                reject(err)
+                return
+            }
+           console.log(result)
+            resolve(result)
+        })
     })
+    return promise
+
 }
 
 module.exports = {getList,getDetail,newBlog,updateBlog,deleteBlog}

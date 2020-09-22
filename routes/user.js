@@ -7,9 +7,11 @@ router.post('/login', function(req, res, next) {
     const {username,password} = req.body
     const result = login(username,password)
     return result.then(data=>{
-        if(data.username){
-            req.session.username = data.username
-            req.session.realname = data.realname
+
+        if(data[0].username){
+
+            req.session.username = data[0].username
+            req.session.realname = data[0].realname
             res.json(new SuccessModel())
             return
           }
@@ -18,20 +20,20 @@ router.post('/login', function(req, res, next) {
     })
 });
 
-router.get('/test', function(req, res, next) {
-console.log(111)
-    if(req.session.username){
-        res.json({
-            error:0,
-            msg:'登录成功'
-        })
-        return
-    }
-    res.json({
-        error:-1,
-        msg:"登录失败"
-    })
-})
+// router.get('/test', function(req, res, next) {
+// console.log(111)
+//     if(req.session.username){
+//         res.json({
+//             error:0,
+//             msg:'登录成功'
+//         })
+//         return
+//     }
+//     res.json({
+//         error:-1,
+//         msg:"登录失败"
+//     })
+// })
 // router.get('/session-test',(req,res,next)=>{
 //     const session = req.session
 //     if(session.num==null){

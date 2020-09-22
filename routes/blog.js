@@ -6,8 +6,9 @@ const loginCheck = require('../middleware/loginCheck')
 /* GET home page. */
 router.get('/list', (req, res, next) =>{
   let author = req.query.author
-  const keyword = req.query.keyword
+  const keyword = req.query.keyword||""
   if(req.query.isadmin){
+
     if(req.session.username==null){
       res.json(
         new ErrorModel('未登录')
@@ -17,11 +18,15 @@ router.get('/list', (req, res, next) =>{
 
     author = req.session.username
   }
+
   const result = getList(author,keyword)
   return result.then(listData=>{
+    console.log(listData)
       res.json(new SuccessModel(listData)) 
   })
+
 });
+
 
 router.get('/detail',(req,res,next)=>{
   const result = getDetail(req.query.id)
