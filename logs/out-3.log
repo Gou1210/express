@@ -68,3 +68,44 @@
 2020-09-19 23:42:50: production
 2020-09-20 01:34:41: [0mGET http://www.baidu.com/cache/global/img/gs.gif [33m404 [0m6.245 ms - 136[0m
 2020-09-20 02:04:21: [0mGET / [33m404 [0m1.072 ms - 136[0m
+2020-09-20 07:42:51: production
+2020-09-20 09:50:40: production
+2020-09-20 09:50:55: production
+2020-09-20 09:53:37: production
+2020-09-20 09:54:08: production
+2020-09-20 09:57:39: production
+2020-09-20 17:57:40: production
+2020-09-21 01:57:42: production
+2020-09-21 09:57:43: production
+2020-09-21 10:00:58: [0mGET / [33m404 [0m6.152 ms - 136[0m
+2020-09-21 17:57:45: production
+2020-09-22 01:57:47: production
+2020-09-22 09:57:48: production
+2020-09-22 17:57:50: production
+2020-09-23 01:57:52: production
+2020-09-23 04:55:39: [0mGET /Public/Home/statics/web/js/style.js [33m404 [0m10.701 ms - 136[0m
+2020-09-23 04:55:39: [0mGET /static/index/js/lk/order.js [33m404 [0m0.825 ms - 136[0m
+2020-09-23 04:55:39: [0mGET /static/js/winScale.js [33m404 [0m0.907 ms - 136[0m
+2020-09-23 09:57:53: production
+2020-09-23 17:57:56: production
+2020-09-24 01:57:57: production
+2020-09-24 09:57:59: production
+2020-09-24 17:58:00: production
+2020-09-25 01:58:01: production
+2020-09-25 09:58:02: production
+2020-09-25 17:58:04: production
+2020-09-26 01:58:05: production
+2020-09-26 09:58:07: production
+2020-09-26 17:58:09: production
+2020-09-27 01:58:12: production
+2020-09-27 09:58:15: production
+2020-09-27 17:58:17: production
+2020-09-28 01:58:20: production
+2020-09-28 09:58:22: production
+2020-09-28 13:04:41: production
+2020-09-28 13:04:50: production
+2020-09-28 13:07:03: production
+2020-09-28 13:15:44: production
+2020-09-28 13:15:54: production
+2020-09-28 13:18:17: production
+2020-09-28 13:18:22: production
