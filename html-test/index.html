@@ -68,6 +68,7 @@
         // 拼接接口 url
         let url = '/api/blog/list'
         const urlParams = getUrlParams()
+        console.log(urlParams)
         if (urlParams.author) {
             url += '?author=' + urlParams.author
         }
@@ -78,14 +79,16 @@
                 alert('数据错误')
                 return
             }
-
+console.log(url)
             // 遍历博客列表，并显示
             const data = res.data || []
+            console.log(data)
+            
             data.forEach(item => {
                 $container.append($(`
                     <div class="title-wrapper">
                         <p class="title">
-                        <a href="/detail.html?id=${item.id}" target="_blank">${item.title}</a>
+                        <a href="/detail.html?id=${item._id}" target="_blank">${item.title}</a>
                         </p>
                         <div class="info-wrapper">
                             <span>
