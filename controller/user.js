@@ -20,7 +20,7 @@ const UserSchema = mongoose.Schema({
 
     username:String,
     password:String,
-    realname:String
+    // realname:String
 })
 
 const UserModel = mongoose.model('User',UserSchema,'user')
@@ -41,4 +41,30 @@ const login = (_username, _password) => {
 
 }
 
-module.exports = {login}
+const regist = (_username,_password ={}) => {
+
+    const promise =  new Promise ((resolve,reject)=>{
+        UserModel.find({username:_username},(err,result)=>{
+  
+            if(result.length!=0){
+               reject(err)
+                return
+            }
+            const instantiationUser = new UserModel({
+                username:_username,
+                password:_password
+            })
+
+             instantiationUser.save({},(err,result)=>{
+
+            resolve(result)
+        })
+        })
+
+    }).catch(()=>{
+
+    })
+    return promise
+
+}
+module.exports = {login,regist}

@@ -1,24 +1,39 @@
 var express = require('express');
 const {SuccessModel,ErrorModel} = require('../model/resModel')
 var router = express.Router();
-const {login} = require('../controller/user')
+const {login,regist} = require('../controller/user')
 router.post('/login', function(req, res, next) {
 
     const {username,password} = req.body
     const result = login(username,password)
-    return result.then(data=>{
+    return result.then(resData=>{
 
-        if(data[0].username){
+        if(resData.length!=0){
+            req.session.username = resData[0].username
+            req.session.realname = resData[0].realname
+            res.json(new SuccessModel())  
 
-            req.session.username = data[0].username
-            req.session.realname = data[0].realname
-            res.json(new SuccessModel())
-            return
           }
-          res.json(new ErrorModel('登录失败')  )
-            
+          res.json(new ErrorModel('账户或者密码错误'))
+          return
+
     })
-});
+})
+
+router.post('/regist', (req, res, next) =>{
+  
+    const {username,password} = req.body
+    const result = regist(username,password)
+    return result.then(resData=>{
+        if(resData){
+            res.json(new SuccessModel(resData)) 
+            return
+        }
+        res.json(new ErrorModel('账户已存在'))
+    })
+    
+  });
+
 
 // router.get('/test', function(req, res, next) {
 // console.log(111)
